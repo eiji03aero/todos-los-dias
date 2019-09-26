@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  todos-los-dias:
+    container_name: todos-los-dias
+    image: golang:1.13.0
+    ports:
+      - "8080:8080"
+    working_dir: /go/src/github.com/eiji03aero/todos-los-dias
+    volumes:
+      - .:/go/src/github.com/eiji03aero/todos-los-dias
+    tty: true
+    command: /bin/bash
