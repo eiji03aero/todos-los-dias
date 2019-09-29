@@ -1,9 +1,17 @@
 version: '3'
 
 services:
+  cockroach:
+    container_name: cockroach
+    build:
+      context: .
+      dockerfile: Dockerfile.cockroach
+    volumes:
+      - v-cockroach-data:/cockroach/cockroach-data
+    tty: true
   todos-los-dias:
     container_name: todos-los-dias
-    image: golang:1.13.0
+    build: .
     ports:
       - "8080:8080"
     working_dir: /go/src/github.com/eiji03aero/todos-los-dias
@@ -11,3 +19,8 @@ services:
       - .:/go/src/github.com/eiji03aero/todos-los-dias
     tty: true
     command: /bin/bash
+    depends_on:
+      - cockroach
+
+volumes:
+  v-cockroach-data:

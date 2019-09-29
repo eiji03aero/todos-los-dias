@@ -5,7 +5,7 @@ COMMAND=${1:-up}
 
 function execute-docker-compose () {
   docker-compose \
-    -f 'docker-compose.yml' \
+    -f 'docker-compose.dev.yml' \
     $@
 }
 
@@ -31,6 +31,12 @@ if [ $COMMAND = 'up' ] && [ $# -le 1 ]; then
   stop-docker-compose
 elif [ $COMMAND = 'bash' ]; then
   execute-docker-compose exec $container_name bash
+
+elif [ $COMMAND = 'init-db' ]; then
+  docker cp ./scripts/init-db.sh cockroach:/cockroach
+  docker cp ./sql/init-db.sql cockroach:/cockroach
+  execute-docker-compose exec cockroach /bin/sh ./init-db.sh
+
 else
   execute-docker-compose $@
 fi

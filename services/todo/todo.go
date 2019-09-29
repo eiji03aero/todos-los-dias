@@ -1,19 +1,19 @@
 package todo
 
-import "context"
+import (
+	"context"
+)
 
-// Order represents an order
 type Todo struct {
 	ID          string `json:"id,omitempty"`
-	Title       string `json:"Title"`
-	Description string `json:"Description"`
-	Status      int64  `json:"Status"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Status      int    `json:"status"`
 	CreatedAt   string `json:"created_at"`
 }
 
-// Repository describes the persistence on order model
 type Repository interface {
-	// CreateOrder(ctx context.Context, order Order) error
-	// GetOrderByID(ctx context.Context, id string) (Order, error)
-	// ChangeOrderStatus(ctx context.Context, id string, status string) error
+	CreateTodo(ctx context.Context, todo Todo) error
+	GetTodoByID(ctx context.Context, id string) (Todo, error)
+	ChangeTodoStatus(ctx context.Context, id string, status int) error
 }
