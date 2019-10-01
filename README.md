@@ -2,7 +2,9 @@
 
 ## models
 
-**Todo**
+
+```
+Todo
 - id
 - title
 - description
@@ -15,21 +17,22 @@
 - updatedAt
 - deletedAt
 
-**Project**
+Project
 - id
 - []Todo
 - createdAt
 - updatedAt
 - deletedAt
 
-**Label**
- id
- owner_id -> Todo, Project
- name
- createdAt
- updatedAt
- deletedAt
+Label
+- id
+- owner_id -> Todo, Project
+- name
+- createdAt
+- updatedAt
+- deletedAt
 
-**User**
- id
- name
+User
+- id
+- name
+```
