@@ -4,6 +4,14 @@ import (
 	"github.com/eiji03aero/todos-los-dias/services/todo"
 )
 
+type GetTodosRequest struct {
+}
+
+type GetTodosResponse struct {
+	Todos []todo.Todo `json:"todos"`
+	Err   error       `json:"error,omitempty"`
+}
+
 type CreateRequest struct {
 	Todo todo.Todo
 }

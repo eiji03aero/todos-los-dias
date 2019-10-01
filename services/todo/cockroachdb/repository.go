@@ -30,6 +30,31 @@ func New(db *sql.DB, logger log.Logger) (todo.Repository, error) {
 	}, nil
 }
 
+func (repo *repository) GetTodos(ctx context.Context) ([]todo.Todo, error) {
+	var todos []todo.Todo
+	stmt, err := repo.db.Prepare("SELECT id, title, description, status, created_at FROM todos")
+	if err != nil {
+		level.Error(repo.logger).Log("err", err.Error())
+		return todos, err
+	}
+	defer stmt.Close()
+	rows, err := stmt.Query()
+	if err != nil {
+		level.Error(repo.logger).Log("err", err.Error())
+		return todos, err
+	}
+	for rows.Next() {
+		var t todo.Todo
+		rows.Scan(&t.ID, &t.Title, &t.Description, &t.Status, &t.CreatedAt)
+		todos = append(todos, t)
+	}
+	if err := rows.Err(); err != nil {
+		level.Error(repo.logger).Log("err", err)
+		return todos, err
+	}
+	return todos, nil
+}
+
 func (repo *repository) CreateTodo(ctx context.Context, todo todo.Todo) error {
 	// Run a transaction to sync the query model.
 	err := crdb.ExecuteTx(ctx, repo.db, nil, func(tx *sql.Tx) error {

@@ -67,14 +67,6 @@ func main() {
 	var endpoints transport.Endpoints
 	{
 		endpoints = transport.MakeEndpoints(svc)
-		// Add endpoint level middlewares here
-		// Trace server side endpoints with open census
-		endpoints = transport.Endpoints{
-			Create:       endpoints.Create,
-			GetByID:      endpoints.GetByID,
-			ChangeStatus: endpoints.ChangeStatus,
-		}
-
 	}
 	var h http.Handler
 	{

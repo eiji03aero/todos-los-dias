@@ -24,13 +24,23 @@ func NewService(rep todosvc.Repository, logger log.Logger) todosvc.Service {
 	}
 }
 
+func (s *service) GetTodos(ctx context.Context) ([]todosvc.Todo, error) {
+	logger := log.With(s.logger, "method", "GetTodos")
+	todos, err := s.repository.GetTodos(ctx)
+	if err != nil {
+		level.Error(logger).Log("err", err)
+		return todos, todosvc.ErrQueryRepository
+	}
+	return todos, nil
+}
+
 func (s *service) Create(ctx context.Context, todo todosvc.Todo) (string, error) {
 	logger := log.With(s.logger, "method", "Create")
 	uuid, _ := uuid.NewV4()
 	id := uuid.String()
 	todo.ID = id
 	todo.Status = 0
-	todo.CreatedAt = time.Now().Format("YYYY-MM-DD HH:mm")
+	todo.CreatedAt = time.Now()
 
 	if err := s.repository.CreateTodo(ctx, todo); err != nil {
 		level.Error(logger).Log("err", err)

@@ -32,10 +32,10 @@ if [ $COMMAND = 'up' ] && [ $# -le 1 ]; then
 elif [ $COMMAND = 'bash' ]; then
   execute-docker-compose exec $container_name bash
 
-elif [ $COMMAND = 'init-db' ]; then
-  docker cp ./scripts/init-db.sh cockroach:/cockroach
-  docker cp ./sql/init-db.sql cockroach:/cockroach
-  execute-docker-compose exec cockroach /bin/sh ./init-db.sh
+elif [ $COMMAND = 'db-init' ]; then
+  docker cp ./scripts/db-init.sh cockroach:/cockroach
+  docker cp ./sql/db-init.sql cockroach:/cockroach
+  execute-docker-compose exec cockroach /bin/sh ./db-init.sh
 
 else
   execute-docker-compose $@

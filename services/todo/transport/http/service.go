@@ -28,6 +28,15 @@ func NewService(
 		kithttp.ServerErrorLogger(logger),
 		kithttp.ServerErrorEncoder(encodeErrorResponse),
 	}
+
+	// HTTP GET - /todos
+	r.Methods("GET").Path("/todos").Handler(kithttp.NewServer(
+		svcEndpoints.GetTodos,
+		decodeGetTodosRequest,
+		encodeResponse,
+		options...,
+	))
+
 	// HTTP Post - /todos
 	r.Methods("POST").Path("/todos").Handler(kithttp.NewServer(
 		svcEndpoints.Create,
@@ -52,6 +61,14 @@ func NewService(
 		options...,
 	))
 	return r
+}
+
+func decodeGetTodosRequest(_ context.Context, r *http.Request) (request interface{}, err error) {
+	var req transport.GetTodosRequest
+	// if e := json.NewDecoder(r.Body).Decode(&req.Todo); e != nil {
+	// 	return nil, e
+	// }
+	return req, nil
 }
 
 func decodeCreateRequest(_ context.Context, r *http.Request) (request interface{}, err error) {
