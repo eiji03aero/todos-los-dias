@@ -9,7 +9,7 @@ import (
 	"github.com/go-kit/kit/log/level"
 	"github.com/gofrs/uuid"
 
-	todosvc "github.com/eiji03aero/todos-los-dias/services/todo"
+	todosvc "github.com/eiji03aero/todos-los-dias/pkg/todo"
 )
 
 type service struct {

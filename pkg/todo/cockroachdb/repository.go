@@ -9,7 +9,7 @@ import (
 	"github.com/cockroachdb/cockroach-go/crdb"
 	"github.com/go-kit/kit/log"
 
-	"github.com/eiji03aero/todos-los-dias/services/todo"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo"
 )
 
 var (

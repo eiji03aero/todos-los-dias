@@ -26,11 +26,14 @@ Project
 
 Label
 - id
-- owner_id -> Todo, Project
 - name
 - createdAt
 - updatedAt
 - deletedAt
+
+LabelOwner
+- label_id
+- owner_id -> Todo, Project
 
 User
 - id

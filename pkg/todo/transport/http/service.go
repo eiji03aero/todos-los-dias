@@ -10,8 +10,8 @@ import (
 	kithttp "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"
 
-	"github.com/eiji03aero/todos-los-dias/services/todo"
-	"github.com/eiji03aero/todos-los-dias/services/todo/transport"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo/transport"
 )
 
 var (

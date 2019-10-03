@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/eiji03aero/todos-los-dias/services/todo"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo"
 )
 
 type GetTodosRequest struct {

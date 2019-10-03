@@ -13,11 +13,11 @@ import (
 	"github.com/go-kit/kit/log/level"
 	_ "github.com/lib/pq"
 
-	"github.com/eiji03aero/todos-los-dias/services/todo"
-	"github.com/eiji03aero/todos-los-dias/services/todo/cockroachdb"
-	todosvc "github.com/eiji03aero/todos-los-dias/services/todo/implementation"
-	"github.com/eiji03aero/todos-los-dias/services/todo/transport"
-	httptransport "github.com/eiji03aero/todos-los-dias/services/todo/transport/http"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo/cockroachdb"
+	todosvc "github.com/eiji03aero/todos-los-dias/pkg/todo/implementation"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo/transport"
+	httptransport "github.com/eiji03aero/todos-los-dias/pkg/todo/transport/http"
 )
 
 func main() {

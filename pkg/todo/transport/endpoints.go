@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-kit/kit/endpoint"
 
-	"github.com/eiji03aero/todos-los-dias/services/todo"
+	"github.com/eiji03aero/todos-los-dias/pkg/todo"
 )
 
 type Endpoints struct {

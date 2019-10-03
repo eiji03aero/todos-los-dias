@@ -34,7 +34,7 @@ elif [ $COMMAND = 'bash' ]; then
 
 elif [ $COMMAND = 'db-init' ]; then
   docker cp ./scripts/db-init.sh cockroach:/cockroach
-  docker cp ./sql/db-init.sql cockroach:/cockroach
+  docker cp ./scripts/sql/db-init.sql cockroach:/cockroach
   execute-docker-compose exec cockroach /bin/sh ./db-init.sh
 
 else

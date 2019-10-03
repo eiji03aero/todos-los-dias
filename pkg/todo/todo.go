@@ -6,7 +6,7 @@ import (
 )
 
 type Todo struct {
-	ID          string    `json:"id,omitempty"`
+	ID          string    `json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	Status      int       `json:"status"`
