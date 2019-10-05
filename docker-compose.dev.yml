@@ -14,6 +14,7 @@ services:
     build: .
     ports:
       - "8080:8080"
+      - "8081:8081"
     working_dir: /go/src/github.com/eiji03aero/todos-los-dias
     volumes:
       - .:/go/src/github.com/eiji03aero/todos-los-dias

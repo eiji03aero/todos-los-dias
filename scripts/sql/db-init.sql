@@ -17,3 +17,10 @@ INSERT INTO todos (id, title, description, status, created_at)
   VALUES (gen_random_uuid(), 'fourth hoge', 'iidesune', 0, now());
 INSERT INTO todos (id, title, description, status, created_at)
   VALUES (gen_random_uuid(), 'fifth hoge', 'iidesune', 0, now());
+
+DROP TABLE IF EXISTS labels;
+CREATE TABLE labels (
+  id UUID NOT NULL,
+  name STRING,
+  created_at TIMESTAMP
+);
